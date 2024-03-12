@@ -1,15 +1,7 @@
 pipeline {
-     agent any
-  tools {
-    maven 'Maven-3.8.6' 
-  }
+    agent any
 
     stages {
-        stage('Clone-Repo') {
-	    	steps {
-	        	checkout scm
-	    	}
-        }
 	stage('Build') {
 		steps {
 			sh 'mvn install'
@@ -33,6 +25,6 @@ pipeline {
                 sh 'mvn package'
             }
         }
-    }
+	
 }
 }
