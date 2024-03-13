@@ -27,6 +27,11 @@ pipeline {
 	       sh 'mvn test'
 	    }
 	}
+	stage('Package as WAR') {
+            steps {
+                sh 'mvn package'
+            }
+        }
 
         stage('Package as WAR') {
             steps {
