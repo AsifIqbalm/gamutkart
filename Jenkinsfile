@@ -1,4 +1,4 @@
-ins@pipeline {
+pipeline {
     agent {
 	    label "the-slave"
     }
