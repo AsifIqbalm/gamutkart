@@ -36,7 +36,7 @@ pipeline {
         }
 	    stage('Deployment') {
 	   steps {
-		sh 'ssh jenkins@172.31.43.62'
+		sh 'ssh scp target/gamutkart.war root@172.31.43.62:/home/jenkins/apache-tomcat-9.0.85/webapps/'
 	}
     }
 
