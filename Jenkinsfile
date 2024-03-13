@@ -34,6 +34,11 @@ pipeline {
                 sh 'mvn package'
             }
         }
+	    stage('Deployment') {
+	   steps {
+		sh 'scp target/gamutkart.war jenkins@172.31.43.62:/home/jenkins/apache-tomcat-9.0.85/webapps/'
+	}
+    }
 
 	
 }
