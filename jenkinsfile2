@@ -1,0 +1,45 @@
+pipeline {
+    agent {
+	    label "the-slave"
+    }
+	tools {
+        maven 'maven4'
+    }
+
+    stages {
+	 stage('Clone-Repo') {
+	    	steps {
+	        	checkout scm
+	    	}
+        }
+	stage('Build') {
+		steps {
+			sh 'mvn install'
+		}
+	}	
+ 
+	stage ('Compile'){
+	        steps {
+			sh 'mvn clean compile'
+                }
+	}
+
+	stage('Run Tests') {
+	    steps {
+	       sh 'mvn test'
+	    }
+	}
+	stage('Package as WAR') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+	    stage('Deployment') {
+	   steps {
+	deploy adapters: [tomcat9(credentialsId: 'd7338d84-e6ed-41c5-ad3f-9760370603bb', path: '', url: 'http://3.110.181.103:8081')], contextPath: '/gamutkart', war: '**/*.war'
+	}
+    }
+
+	
+}
+}
