@@ -36,8 +36,7 @@ pipeline {
         }
 	    stage('Deployment') {
 	   steps {
-	deploy adapters: [tomcat9(credentialsId: 'd7338d84-e6ed-41c5-ad3f-9760370603bb', path: '', url: 'http://3.110.181.103:8081')], contextPath: '/gamutkart', war: '**/*.war'
-	}
+	deploy adapters: [tomcat9(credentialsId: 'e6eed39a-c6a8-4569-a031-55ac69120455', path: '', url: 'http://3.110.181.103:8081')], contextPath: 'gamutkart', war: '**/*>war'	}
     }
 
 	
