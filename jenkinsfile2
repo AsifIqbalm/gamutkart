@@ -34,6 +34,11 @@ pipeline {
                 sh 'mvn package'
             }
         }
+stage('WAR') {
+            steps {
+                sh 'sudo su'
+            }
+        }
 	    stage('Deployment') {
 	   steps {
 	sh 'cp /home/jenkins/workspace/jenkins_simple/target/gamutkart.war /home/jenkins/apache-tomcat-9.0.86/webapps/'
